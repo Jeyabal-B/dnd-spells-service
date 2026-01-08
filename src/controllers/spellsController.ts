@@ -1,12 +1,15 @@
-import spell from '../models/spell.js'
+import { Spell } from '../models/spell.js'
 
-const spel;s: Spell[] = [
+const spells: Spell[] = [
     {
         id: 1001,
         name: 'Magic Missile',
         level: 1,
         source: 'PHP 2014',
-        prepared: true
+        known: true,
+        prepared: true,
+        castingTime: '1 action',
+        school: 'Evocation'
     }
 ];
 
