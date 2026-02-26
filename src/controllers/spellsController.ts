@@ -11,7 +11,19 @@ const spells: Spell[] = [
         known: true,
         prepared: true,
         castingTime: '1 action',
+        range: '120 feet',
         school: 'Evocation'
+    },
+    {
+        id: 1002,
+        name: 'Shield',
+        level: 1,
+        source: 'PHP 2014',
+        known: true,
+        prepared: true,
+        castingTime: '1 reaction',
+        range: 'self',
+        school: 'Abjuration'
     }
 ];
 
@@ -24,7 +36,6 @@ class spellsController {
     addSpell = async (request: express.Request, response: express.Response) => {
         try{
             const newSpell: Spell = {
-                id: Date.now(),
                 ... request.body
             }
             spells.push(newSpell);
