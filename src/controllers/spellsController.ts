@@ -12,7 +12,8 @@ const spells: Spell[] = [
         prepared: true,
         castingTime: '1 action',
         school: 'Evocation'
-    }];
+    }
+];
 
 class spellsController {
 
@@ -20,6 +21,18 @@ class spellsController {
         return response.status(200).json(spells);
     }
 
+    addSpell = async (request: express.Request, response: express.Response) => {
+        try{
+            const newSpell: Spell = {
+                id: Date.now(),
+                ... request.body
+            }
+            spells.push(newSpell);
+            return response.status(200).json(spells);
+        }catch (error){
+            return response.status(400).json({ message : 'Invalid Spell Data', error});
+        }        
+    }
 }
 
 export default new spellsController();
