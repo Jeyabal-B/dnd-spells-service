@@ -11,6 +11,7 @@ const spells: Spell[] = [
         known: true,
         prepared: true,
         castingTime: '1 action',
+        duration: 'Instantaneous',
         range: '120 feet',
         school: 'Evocation'
     },
@@ -22,6 +23,7 @@ const spells: Spell[] = [
         known: true,
         prepared: true,
         castingTime: '1 reaction',
+        duration: '1 round',
         range: 'self',
         school: 'Abjuration'
     }
