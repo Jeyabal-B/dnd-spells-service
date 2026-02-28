@@ -7,7 +7,7 @@ const spells: Spell[] = [
         id: 1001,
         name: 'Magic Missile',
         level: 1,
-        source: 'PHP 2014',
+        source: 'PHP',
         known: true,
         prepared: true,
         castingTime: '1 action',
@@ -19,13 +19,37 @@ const spells: Spell[] = [
         id: 1002,
         name: 'Shield',
         level: 1,
-        source: 'PHP 2014',
+        source: 'PHP',
         known: true,
         prepared: true,
         castingTime: '1 reaction',
         duration: '1 round',
         range: 'self',
         school: 'Abjuration'
+    },
+    {
+        id: 1003,
+        name: 'Web',
+        level: 2,
+        source: 'Xanathar',
+        known: false,
+        prepared: false,
+        castingTime: '1 action',
+        duration: '1 minute',
+        range: '60 feet',
+        school: 'Conjuration'
+    },
+    {
+        id: 1004,
+        name: 'Dragons Breath',
+        level: 2,
+        source: 'Tasha',
+        known: false,
+        prepared: false,
+        castingTime: '1 Bonus Action',
+        duration: '1 minute',
+        range: 'self',
+        school: 'Evocation'
     }
 ];
 
