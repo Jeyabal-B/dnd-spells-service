@@ -1,7 +1,7 @@
 {
   "name": "spells",
   "version": "1.0.0",
-  "description": "Microservice for all the DnD Spells",
+  "description": "Stable release with static data for spells v1.0.0",
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
