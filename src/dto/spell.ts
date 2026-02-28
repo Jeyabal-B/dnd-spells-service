@@ -1,5 +1,5 @@
 export interface Spell {
-    id: number;
+    id?: number;
     name: String;
     level: number;
     castingTime: String;

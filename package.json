@@ -1,6 +1,6 @@
 {
   "name": "spells",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Stable release with static data for spells v1.0.0",
   "main": "src/index.ts",
   "type": "module",
@@ -15,6 +15,7 @@
     "@prisma/client": "^7.2.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "mongoose": "^9.2.3",
     "prisma": "^7.2.0"
   },
   "devDependencies": {

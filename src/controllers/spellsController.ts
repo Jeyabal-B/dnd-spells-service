@@ -1,72 +1,26 @@
-import express from 'express'
-import { Spell } from '../models/spell.js'
-
-//temporary - replace it soon with a db call
-const spells: Spell[] = [
-    {
-        id: 1001,
-        name: 'Magic Missile',
-        level: 1,
-        source: 'PHP',
-        known: true,
-        prepared: true,
-        castingTime: '1 action',
-        duration: 'Instantaneous',
-        range: '120 feet',
-        school: 'Evocation'
-    },
-    {
-        id: 1002,
-        name: 'Shield',
-        level: 1,
-        source: 'PHP',
-        known: true,
-        prepared: true,
-        castingTime: '1 reaction',
-        duration: '1 round',
-        range: 'self',
-        school: 'Abjuration'
-    },
-    {
-        id: 1003,
-        name: 'Web',
-        level: 2,
-        source: 'Xanathar',
-        known: false,
-        prepared: false,
-        castingTime: '1 action',
-        duration: '1 minute',
-        range: '60 feet',
-        school: 'Conjuration'
-    },
-    {
-        id: 1004,
-        name: 'Dragons Breath',
-        level: 2,
-        source: 'Tasha',
-        known: false,
-        prepared: false,
-        castingTime: '1 Bonus Action',
-        duration: '1 minute',
-        range: 'self',
-        school: 'Evocation'
-    }
-];
+import { Request, Response } from 'express'
+import { SpellModel } from '../models/spell.model.js'
 
 class spellsController {
 
-    getAllSpells = async (request: express.Request, response: express.Response) => {
-        return response.status(200).json(spells);
-    }
-
-    addSpell = async (request: express.Request, response: express.Response) => {
+    getAllSpells = async (request: Request, response: Response) => {
         try{
-            const newSpell: Spell = {
-                ... request.body
-            }
-            spells.push(newSpell);
+            const spells = await SpellModel.find().lean();
             return response.status(200).json(spells);
+        }catch(error){
+            console.error('Error occured while fetching all the spells: ', error);
+            return response.status(500).json({ message:'Failed to fetch all spells', error});
+        }
+    };
+
+    addSpell = async (request: Request, response: Response) => {
+        console.log('Input Received: ', request.body);
+        
+        try{
+            const newSpell  = await SpellModel.create(request.body);
+            return response.status(200).json(newSpell);
         }catch (error){
+            console.error('Error occured while adding a new spell: ', error);
             return response.status(400).json({ message : 'Invalid Spell Data', error});
         }        
     }
