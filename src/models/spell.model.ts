@@ -33,7 +33,7 @@ export interface SpellDocument extends Document {
   tags?: string[];
 
   source: string;
-
+  mechanic: string;
   prepared: boolean;
   known: boolean;
 }
@@ -71,7 +71,7 @@ const SpellSchema = new Schema<SpellDocument>({
   tags: { type: [String], default: [] },
 
   source: { type: String, required: true },
-
+  mechanic: { type: String, required: false },
   prepared: { type: Boolean, default: false },
   known: { type: Boolean, default: false }
 });

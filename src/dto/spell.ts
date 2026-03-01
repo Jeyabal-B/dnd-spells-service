@@ -31,7 +31,7 @@ export interface Spell {
   tags?: string[];
 
   source: string;
-
+  mechanic: string;
   prepared: boolean;
   known: boolean;
 }
