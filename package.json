@@ -1,7 +1,7 @@
 {
   "name": "spells",
-  "version": "1.1.0",
-  "description": "Stable release with static data for spells v1.0.0",
+  "version": "1.2.0",
+  "description": "Experimenting with new data structure and with data dump",
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
