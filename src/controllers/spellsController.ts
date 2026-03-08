@@ -41,6 +41,29 @@ class spellsController {
         }
     };
 
+    updateSpell = async (request: Request, response: Response) => {
+        console.log('Request received for update spell: ', request.body);
+        const id = request.body;
+
+        if(!id){
+            return response.status(400).json({ message: 'Spell ID is mandatory for update'});
+        }
+
+        try{
+            const updatedSpell = await spellService.updateSpell(request.body);
+
+            if(!updatedSpell){
+                return response.status(404).json({ message: 'Spell not found, please check the ID'});
+            }
+            
+            console.log('Spell updated successfully: ', updatedSpell);
+            return response.status(200).json(updatedSpell);
+        }catch(error){
+            console.log('Error occured during update: ', error);
+            return response.status(500).json({ message: 'Failed to perform update'});
+        }
+    };
+
 }
 
 export default new spellsController();

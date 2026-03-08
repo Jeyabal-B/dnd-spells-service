@@ -12,6 +12,18 @@ class spellService {
     async addSpells(request: any) {
         return await SpellModel.insertMany(request, { ordered: false });
     }
+
+    async updateSpell(request: any) {
+
+        const { id, ...updateData } = request;
+
+        return await SpellModel.findByIdAndUpdate(
+            id,
+            updateData, {
+            new: true,
+            runValidators: true,
+        }).lean();
+    }
 }
 
 export default new spellService();
