@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import { SpellModel } from '../models/spell.model.js'
+import spellService from '../services/spellService.js';
 
 class spellsController {
 
     getAllSpells = async (request: Request, response: Response) => {
         try{
-            const spells = await SpellModel.find().lean();
+            const spells = await spellService.getAllSpells();
             return response.status(200).json(spells);
         }catch(error){
             console.error('Error occured while fetching all the spells: ', error);
@@ -17,7 +17,7 @@ class spellsController {
         console.log('Input Received: ', request.body);
         
         try{
-            const newSpell  = await SpellModel.create(request.body);
+            const newSpell  = await spellService.addSpell(request.body);
             return response.status(200).json(newSpell);
         }catch (error){
             console.error('Error occured while adding a new spell: ', error);
@@ -33,7 +33,7 @@ class spellsController {
         }
 
         try {
-            const newSpells = await SpellModel.insertMany(request.body, { ordered: false });
+            const newSpells = await spellService.addSpells(request.body);
             return response.status(200).json(newSpells);
         } catch (error) {
             console.error('Error occurred while adding multiple spells:', error);
